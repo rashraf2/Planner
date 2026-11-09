@@ -393,6 +393,7 @@ button:hover:after {
     font-weight: normal;
     pointer-events:all;
     cursor:pointer;
+    z-index:5;
 
 }
 
