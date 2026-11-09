@@ -733,7 +733,7 @@ body.all-grids {
     body {
         min-height: calc(100vh - var(--nav));
         height: auto;
-        font-size: 14.75px;
+        font-size: 14.2px;
     }
 
     #loading-screen {
