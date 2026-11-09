@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Planner</title>
+    <style></style>
+</head>
+
+<body class="loading">
+    <div id="overlay"></div>
+    <!--Setup and load popups-->
+    <div id="loading-screen">
+        <img id="load-img" src="logo_white2.png" class="pri_img"></img>
+        <div id="script-list" class="popup-item">
+            <div id="user-load-info">
+                <h1 id="load-title">Welcome Back!</h1>
+                <h2 id="load-desc">It's an honor to have you here!</h2>
+            </div>
+            <div class="script-cont">
+                <h1 class="script">Initial checks</h1>
+                <div class="status"></div>
+            </div>
+            <div class="script-cont">
+                <h1 class="script">Load local subject data</h1>
+                <div class="status"></div>
+            </div>
+            <div class="script-cont">
+                <h1 class="script">Check for saved settings</h1>
+                <div class="status"></div>
+            </div>
+            <div class="script-cont">
+                <h1 class="script">Sync user theme</h1>
+                <div class="status"></div>
+            </div>
+        </div>
+    </div>
+    <div id="setup" class="popup">
+        <div class="setup-sect active">
+            <h1 class="popup-title">Welcome!</h1>
+            <h2 class="popup-desc">Looks like you haven't been here before. Don't worry, we'll have you set up in no
+                time! (This screen should only appear once. If it appears again, make sure you use the same browser)
+            </h2>
+        </div>
+        <div class="setup-sect">
+            <h1 class="popup-title">Name</h1>
+            <h2 class="popup-desc">What should we call you? We'll use this mainly for your account section and
+                greetings.</h2>
+            <input type="text" id="username-input">
+        </div>
+        <div class="setup-sect">
+            <h1 class="popup-title">Theme</h1>
+            <h2 class="popup-desc">After you're done, you can select a theme to customize your experience.</h2>
+        </div>
+        <div class="setup-sect">
+            <h1 class="popup-title">Account Center</h1>
+            <h2 class="popup-desc">Your stats have become easier to view. You can see more about this on the
+                <b>Accounts</b> page.
+            </h2>
+        </div>
+        <div class="setup-sect">
+            <h1 class="popup-title">Be Aware...</h1>
+            <h2 class="popup-desc">You may experience bugs, since this release is new and it has been fully rebuilt from
+                the ground-up. We apologize if this occurs.</h2>
+        </div>
+        <div class="setup-buttons">
+            <button id="prev-button" onclick="setup('back')" style="display:none">Back</button>
+            <button id="next-button" onclick="setup('next')">Next</button>
+        </div>
+        <div class="setup-sect">
+            <h1 class="popup-title">That's It!</h1>
+            <h2 class="popup-desc">You've completed the setup successfully. Now, you can enjoy using Planner!</h2>
+            <button style="background:var(--c1);color:var(--c2)" onclick="setup('done')">Finish Setup</button>
+        </div>
+    </div>
+    <nav id="nav">
+        <div id="logo-cont"><img id="logo" class="pri_img" src="logo_white2.png"><span id="logo-text">Planner</span>
+        </div>
+        <div id="icon-tray">
+            <button class="nav-btn" aria-label="Account" onclick="togglePopup('accounts', 'active'
+                ),document.getElementById('overlay').classList.add('active')">person</button>
+            <button class="nav-btn" aria-label="Update Log" onclick="togglePopup('updates', 'active'
+                ),document.getElementById('overlay').classList.add('active')">cached</button><button class="nav-btn"
+                aria-label="Themes" onclick="togglePopup('themes-popup', 'active', 1
+                )">brush</button>
+            <button class="nav-btn" id="menu-btn" aria-label="Settings" onclick="togglePopup('settings', 'active'
+                ),document.getElementById('overlay').classList.add('active')">Settings</button>
+        </div>
+    </nav>
+    <menu id="settings" class="popup">
+
+        <button class="close-btn" aria-label="Close" onclick="togglePopup('settings', 'active'
+                ), document.getElementById('overlay').classList.remove('active')">Close</button>
+        <h1 class="popup-title">Settings</h1>
+        <div class="popup-wrapper">
+            <div class="settings-cont">
+                <h1 class="title-medium">Grid Layout</h1>
+                <h2 class="title-small">Change the way that the subject grid appears.</h2>
+                <div class="setting">
+
+                    <h1 class="setting-title">List subjects</h1><input class="setting-toggle" type="checkbox"
+                        onclick="toggleValues('body', '', 'height:auto');toggleValues('class', 'grid', 'grid-template-columns:repeat(1, 1fr)');">
+
+
+                </div>
+                <div class="setting">
+
+                    <h1 class="setting-title">Show checkboxes</h1><input class="setting-toggle" type="checkbox"
+                        onclick="toggleValues('class', 'subject-marker', 'display:flex')">
+
+
+                </div>
+                <div class="setting">
+
+                    <h1 class="setting-title">Tightly packed grid</h1><input class="setting-toggle" type="checkbox"
+                        onclick="toggleValues('class', 'grid', 'gap:10px')">
+
+
+                </div>
+                <!--<div class="setting">
+
+                    <h1 class="title-small">Disable scroll timer</h1>
+                    <input class="setting-toggle" type="checkbox"
+                        onclick="toggleValues('class', 'subject-marker', 'display:flex')">
+
+
+                </div>-->
+            </div>
+            <div class="settings-cont">
+                <h1 class="title-medium">Other</h1>
+                <h2 class="title-small">These settings do not have a specific category at the moment.</h2>
+                <div class="setting">
+
+                    <h1 class="setting-title">Hide Navbar Logo</h1><input class="setting-toggle" type="checkbox"
+                        onclick="toggleValues('id', 'icon-tray', 'width:100%');toggleValues('id', 'logo-cont', 'display:none');toggleValues('class', 'nav-btn', 'width:100%');">
+
+
+                </div>
+                <h2 class="title-small">Best on small screens. Makes nav buttons much easier to tap.</h2>
+            </div>
+            <div class="settings-cont">
+                <h1 class="title-medium">Your data</h1>
+                <h2 class="title-small">Stored on your device. Refresh to apply.</h2>
+                <button onclick="removeStorage('username'); removeStorage('setup')">Delete Username</button>
+                <button onclick="removeStorage('points');removeStorage('checkedSubjects')">Delete Points</button>
+                <button onclick="removeStorage('checkboxes')">Delete Checkbox Data</button>
+                <button onclick="removeStorage('pages')">Delete App Uses</button>
+                <button
+                    onclick="removeStorage('checkedSubjects');removeStorage('pages');removeStorage('checkboxes');removeStorage('points');removeStorage('username'); removeStorage('setup')">Full
+                    Reset</button>
+
+            </div>
+    </menu>
+    <div class="popup" id="themes-popup">
+        <h1 class="popup-title-small">Themes</h1>
+        <button class="theme-btn" bg="hsl(0,0%,10%)">Dark Mode</button>
+        <button class="theme-btn" bg="hsl(0,0%,45%)">Gray Mode</button>
+        <button class="theme-btn" bg="hsl(0,0%,85%)" color="dark">Light Mode</button>
+        <button bg="hsl(0,63.9%,15%)" color='yes' class="theme-btn" selected>Ruby
+            Red</button>
+        <button bg="hsl(33,100%,15%)" color='yes' class="theme-btn" selected>Fiery
+            Orange</button>
+        <button bg="hsl(235,40.9%,15%)" color='yes' class="theme-btn" selected>Midnight
+            Blue</button>
+        <button bg="hsl(174,50%,26.2%)" color="yes" class="theme-btn">Teal</button>
+        <button bg="hsl(127,92.3%,15%)" color='yes' class="theme-btn" selected>Forest
+            Green</button>
+        <button bg="hsl(135,90%,30.4%)" color="yes" class="theme-btn">Lime</button>
+        <button bg="hsl(282,92.3%,15%)" color='yes' class="theme-btn" selected>Lavender
+            Purple</button>
+        <button bg="hsl(275, 100%,20.5%)" color="yes" class="theme-btn">Royal
+            Purple</button>
+        <button bg="hsl(298,100%,30.2%)" color="yes" class="theme-btn">Bubble Gum</button>
+        <button bg="hsl(55,96%,26%)" color='yes' class="theme-btn" selected>Lemon
+            Yellow</button>
+        <button bg="hsl(41,95%,40.3%)" class="theme-btn" color=dark>Desert</button>
+        <button bg="hsl(21,100%,10.2%)" color="yes" class="theme-btn">Soda</button>
+    </div>
+    <div class="popup" id="accounts">
+        <h1 class="popup-title">Account</h1>
+        <div class="popup-wrapper">
+            <button class="close-btn" aria-label="Close" onclick="togglePopup('accounts', 'active'
+                ),  document.getElementById('overlay').classList.remove('active')">Close</button>
+            <div class=" popup-item">
+                <h2 class="title-medium" id="username">Active User</h2>
+                <h3 class="title-small">current user</h3>
+            </div>
+            <div class="popup-item">
+                <h2 class="title-medium" id="points">0</h2>
+                <h3 class="title-small">current points</h3>
+            </div>
+            <div class="popup-item">
+                <h2 class="title-medium" id="pages">0</h2>
+                <h3 class="title-small">page loads</h3>
+            </div>
+            <div class="popup-item">
+                <h2 class="title-medium" id="checkboxes">0</h2>
+                <h3 class="title-small">checkbox clicks</h3>
+            </div>
+        </div>
+        <h3 class="title-small">Go to <b>Settings</b> to find
+            options about deleting your data.
+        </h3>
+        <h3 class="title-small">Your data is stored on your browser, and is not transferrable.
+            Planner never stores any data on a server. You can clear your data any time in settings, and use the app
+            in Guest mode, which
+            does not store data.
+        </h3>
+    </div>
+    <div class="popup" id="updates">
+        <h1 class="popup-title">Update Log</h1>
+        <h2 class="title-small" style="font-weight:normal">Version 1.0 of Planner | Version 4.0 of Today's Homework
+        </h2>
+
+        <button class="close-btn" aria-label="Close" onclick="togglePopup('updates', 'active'
+                ),  document.getElementById('overlay').classList.remove('active')">Close</button>
+        <div class="popup-item">
+            <h1 class="title-medium">Better Settings</h1>
+            <h2 class="title-small">Newer toggles, more options, and a grid-style layout to minimize scrolling
+                on larger screens, while preventing small screens from overflowing.
+            </h2>
+        </div>
+        <div class="popup-item">
+            <h1 class="title-medium">Unified popups</h1>
+            <h2 class="title-small">Noticed that everything looks similar? We addressed the
+                problem of inconsistency in popups to refine
+                the experience.
+            </h2>
+        </div>
+        <div class="popup-item">
+            <h1 class="title-medium">Code efficiency</h1>
+            <h2 class="title-small">Planner takes up substantially less space than its predecessors, allowing for
+                the same core
+                functions, while making load times shorter.
+        </div>
+        <div class="popup-item">
+            <h1 class="title-medium">More insights</h1>
+            <h2 class="title-small">Curious about where you are in terms of usage? Check out the new <b>Account</b>
+                section!
+            </h2>
+        </div>
+        <div class="popup-item">
+            <h1 class="title-medium">Public Access</h1>
+            <h2 class="title-small">Just like in the old days, access this anytime in your browser.
+            </h2>
+        </div>
+        <span class="title-small">We hope you enjoy this update! You can send us your feedback whenever you like in
+            <b>Settings</b>!</span>
+    </div>
+    <div id="grid-cont">
+        <div class="grid">
+            <div class="subject" style="background-color:rgb(139, 22, 22)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Algebra</h1>
+                <h2 class="subject-desc" contenteditable=true>Finish 5.2, wait till tomorrow and do 5.3</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(166, 101, 15)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Geometry</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(27, 58, 125)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">English</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(17, 74, 5)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Science</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(82, 15, 79)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Ancient History</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+        </div>
+        <div class="grid active">
+            <div class="subject" style="background-color:rgb(139, 22, 22)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Chinese</h1>
+                <h2 class="subject-desc" contenteditable=true>Finish 5.2, wait till tomorrow and do 5.3</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(132, 125, 22)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Latin</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+            <div class="subject" style="background-color:rgb(27, 58, 125)">
+                <input class="subject-marker" type="checkbox">
+                <h1 class="subject-title">Spanish</h1>
+                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+            </div>
+        </div>
+    </div>
+</body>
+<script src='script.js'></script>
+
+</html>
