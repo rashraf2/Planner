@@ -373,6 +373,9 @@ button:hover:after {
     height: 100%;
     align-items: center;
     justify-content: center;
+    z-index:3;
+    pointer-events:all;
+    user-select:none;
 }
 
 .nav-btn,
@@ -388,6 +391,8 @@ button:hover:after {
     align-items: center;
     justify-content: center;
     font-weight: normal;
+    pointer-events:all;
+    cursor:pointer;
 
 }
 
@@ -398,6 +403,7 @@ button:hover:after {
     width: 65px;
     height: 65px;
     font-size: 40px;
+    z-index:5;
 }
 
 /*Themes*/
