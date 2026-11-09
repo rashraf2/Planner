@@ -15,7 +15,7 @@ let checkboxes;
 let pages = 0;
 let grids = document.querySelectorAll('.grid');
 let checkedSubjects = [0, 0, 0, 0, 0, 0];
-let parsedSubjects;
+let parsedSubjects = [];
 let currentDay = new Date();
 currentDay = currentDay.getDate();
 const strArray = ['Hey there', 'Hello', 'Nice day to do homework', 'Good day', 'You\'re back', 'Time to study', 'Make sure you have your planner'];
@@ -24,10 +24,13 @@ window.onload = async function () {
     await checkboxFunct();
     await userFunct();
     await themeFunct();
-    await wait(1000);
+    await wait(250);
     finishedLoading();
 }
 function togglePopup(param1, param2, disabled) {
+    if (param1 === 'body') {
+        document.body.classList.toggle(param2);
+    }
     document.getElementById(param1).classList.toggle(param2);
 }
 async function wait(ms) {
@@ -127,10 +130,18 @@ async function initializeData() {
     if (pass(localStorage.getItem('checkedSubjects')) === true) {
         if (pass(localStorage.getItem('date')) !== true || currentDay !== Number(localStorage.getItem('date'))) {
             localStorage.setItem('checkedSubjects', '');
-            localStorage.setItem('date',currentDay);
+            localStorage.setItem('date', currentDay);
             return;
         }
-        parsedSubjects = JSON.parse(localStorage.getItem("checkedSubjects"));
+        try {
+            parsedSubjects = JSON.parse(localStorage.getItem("checkedSubjects"));
+        }
+        catch (error) {
+
+            console.log(localStorage.getItem("checkedSubjects"));
+            parsedSubjects = [];
+            return false;
+        }
         for (i = 0; i < parsedSubjects.length; i++) {
             if (parsedSubjects[i] === 1) {
                 document.querySelectorAll('.subject-marker')[i].click();
@@ -273,7 +284,7 @@ async function scrollGrids() {
     } else {
         counter += 1; grids[counter].classList.remove('inactive');
     }
-    setTimeout(scrollGrids, 20000);
+    scrollTime = setTimeout(scrollGrids, 20000);
 }
 function removeStorage(name) {
     localStorage.removeItem(name);
