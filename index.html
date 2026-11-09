@@ -47,6 +47,10 @@
                 time! (This screen should only appear once. If it appears again, make sure you use the same browser)
             </h2>
         </div>
+        <div class="setup-buttons">
+            <button id="prev-button" onclick="setup('back')" style="display:none">Back</button>
+            <button id="next-button" onclick="setup('next')">Next</button>
+        </div>
         <div class="setup-sect">
             <h1 class="popup-title">Name</h1>
             <h2 class="popup-desc">What should we call you? We'll use this mainly for your account section and
@@ -68,10 +72,6 @@
             <h2 class="popup-desc">You may experience bugs, since this release is new and it has been fully rebuilt from
                 the ground-up. We apologize if this occurs.</h2>
         </div>
-        <div class="setup-buttons">
-            <button id="prev-button" onclick="setup('back')" style="display:none">Back</button>
-            <button id="next-button" onclick="setup('next')">Next</button>
-        </div>
         <div class="setup-sect">
             <h1 class="popup-title">That's It!</h1>
             <h2 class="popup-desc">You've completed the setup successfully. Now, you can enjoy using Planner!</h2>
@@ -83,13 +83,12 @@
         </div>
         <div id="icon-tray">
             <button class="nav-btn" aria-label="Account" onclick="togglePopup('accounts', 'active'
-                ),document.getElementById('overlay').classList.add('active')">person</button>
+                )">person</button>
             <button class="nav-btn" aria-label="Update Log" onclick="togglePopup('updates', 'active'
-                ),document.getElementById('overlay').classList.add('active')">cached</button><button class="nav-btn"
-                aria-label="Themes" onclick="togglePopup('themes-popup', 'active', 1
+                )">cached</button><button class="nav-btn" aria-label="Themes" onclick="togglePopup('themes-popup', 'active', 1
                 )">brush</button>
             <button class="nav-btn" id="menu-btn" aria-label="Settings" onclick="togglePopup('settings', 'active'
-                ),document.getElementById('overlay').classList.add('active')">Settings</button>
+                )">Settings</button>
         </div>
     </nav>
     <menu id="settings" class="popup">
@@ -97,6 +96,9 @@
         <button class="close-btn" aria-label="Close" onclick="togglePopup('settings', 'active'
                 ), document.getElementById('overlay').classList.remove('active')">Close</button>
         <h1 class="popup-title">Settings</h1>
+        <h2 class="title-small">Manage your preferences like if you want to check off your subjects or how you want to
+            view them.
+        </h2>
         <div class="popup-wrapper">
             <div class="settings-cont">
                 <h1 class="title-medium">Grid Layout</h1>
@@ -108,6 +110,7 @@
 
 
                 </div>
+                <h2 class="title-small">Desktop only. Use if you want to show your subjects in a single column.</h2>
                 <div class="setting">
 
                     <h1 class="setting-title">Show checkboxes</h1><input class="setting-toggle" type="checkbox"
@@ -115,27 +118,27 @@
 
 
                 </div>
+                <h2 class="title-small">Check or uncheck your subjects.</h2>
                 <div class="setting">
 
                     <h1 class="setting-title">Tightly packed grid</h1><input class="setting-toggle" type="checkbox"
                         onclick="toggleValues('class', 'grid', 'gap:10px')">
 
+                </div>
+                <h2 class="title-small">Reduce the gap between subjects in each grid.</h2>
+                <div class="setting">
+
+                    <h1 class="setting-title">Show all grids</h1>
+                    <input class="setting-toggle" type="checkbox" onclick="togglePopup('body', 'all-grids')">
+
 
                 </div>
-                <!--<div class="setting">
-
-                    <h1 class="title-small">Disable scroll timer</h1>
-                    <input class="setting-toggle" type="checkbox"
-                        onclick="toggleValues('class', 'subject-marker', 'display:flex')">
-
-
-                </div>-->
+                <h2 class="title-small">Use if you don't want to wait for the grids to refresh.</h2>
             </div>
             <div class="settings-cont">
                 <h1 class="title-medium">Other</h1>
                 <h2 class="title-small">These settings do not have a specific category at the moment.</h2>
                 <div class="setting">
-
                     <h1 class="setting-title">Hide Navbar Logo</h1><input class="setting-toggle" type="checkbox"
                         onclick="toggleValues('id', 'icon-tray', 'width:100%');toggleValues('id', 'logo-cont', 'display:none');toggleValues('class', 'nav-btn', 'width:100%');">
 
@@ -150,8 +153,9 @@
                 <button onclick="removeStorage('points');removeStorage('checkedSubjects')">Delete Points</button>
                 <button onclick="removeStorage('checkboxes')">Delete Checkbox Data</button>
                 <button onclick="removeStorage('pages')">Delete App Uses</button>
+                <button onclick="removeStorage('theme')">Delete Theme</button>
                 <button
-                    onclick="removeStorage('checkedSubjects');removeStorage('pages');removeStorage('checkboxes');removeStorage('points');removeStorage('username'); removeStorage('setup')">Full
+                    onclick="removeStorage('checkedSubjects');removeStorage('pages');removeStorage('checkboxes');removeStorage('points');removeStorage('theme');removeStorage('username'); removeStorage('setup')">Full
                     Reset</button>
 
             </div>
@@ -183,6 +187,7 @@
     </div>
     <div class="popup" id="accounts">
         <h1 class="popup-title">Account</h1>
+        <h2 class="title-small">View insights about your data on the current user account.</h2>
         <div class="popup-wrapper">
             <button class="close-btn" aria-label="Close" onclick="togglePopup('accounts', 'active'
                 ),  document.getElementById('overlay').classList.remove('active')">Close</button>
@@ -214,7 +219,7 @@
     </div>
     <div class="popup" id="updates">
         <h1 class="popup-title">Update Log</h1>
-        <h2 class="title-small" style="font-weight:normal">Version 1.0 of Planner | Version 4.0 of Today's Homework
+        <h2 class="title-small">Version 1.0 of Planner | Version 4.0 of Today's Homework
         </h2>
 
         <button class="close-btn" aria-label="Close" onclick="togglePopup('updates', 'active'
@@ -257,7 +262,7 @@
             <div class="subject" style="background-color:rgb(139, 22, 22)">
                 <input class="subject-marker" type="checkbox">
                 <h1 class="subject-title">Algebra</h1>
-                <h2 class="subject-desc" contenteditable=true>Learn more info!</h2>
+                <h2 class="subject-desc" contenteditable=true>Finish 5.2, wait till tomorrow and do 5.3</h2>
             </div>
             <div class="subject" style="background-color:rgb(166, 101, 15)">
                 <input class="subject-marker" type="checkbox">
