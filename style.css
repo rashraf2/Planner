@@ -17,6 +17,7 @@ body {
     scrollbar-color: var(--c1) transparent;
     color: var(--c1);
     scrollbar-width: none;
+    overscroll-behavior: none;
 
 }
 
@@ -154,6 +155,7 @@ button:hover:after {
     padding: 15px;
     color: var(--c1);
         pointer-events:auto;
+        width:100%;
     
 }
 
@@ -273,6 +275,7 @@ button:hover:after {
     overflow-y: auto;
     border-radius: var(--n1);
     user-select: none;
+    overflow-x:hidden;
 }
 
 .popup-wrapper {
@@ -702,7 +705,7 @@ button:hover:after {
     body {
         min-height: calc(100vh - var(--nav));
         height: auto;
-        font-size:15.5px;
+        font-size:14px;
     }
 
     #loading-screen {
@@ -710,7 +713,9 @@ button:hover:after {
         padding: var(--n1);
         gap: var(--n1);
     }
-
+    .setup-sect {
+        padding:var(--n2);
+    }
     #load-img {
         height: 250px;
     }
