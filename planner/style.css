@@ -55,7 +55,7 @@ h6 {
     font-weight: unset;
 }
 
-button {
+/*button {
     font-family: inherit;
     border: none;
     color: inherit;
@@ -80,6 +80,7 @@ input {
     border: none;
     font-size: 1em;
     font-family: inherit;
+    pointer-events:auto;
 }
 
 input:focus-visible {
@@ -89,7 +90,7 @@ input:focus-visible {
 button:hover {
     filter: brightness(1.3);
 }
-
+*/
 /*First-time setup*/
 #setup {
     width: 100%;
@@ -175,6 +176,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     transition: 0.3s allow-discrete;
+    display:none;
 
 }
 
@@ -342,6 +344,7 @@ button:hover {
     align-items: center;
     pointer-events: auto;
     z-index: 9;
+    display:none;
 }
 
 #logo {
