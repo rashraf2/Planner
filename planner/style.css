@@ -17,6 +17,7 @@ body {
     scrollbar-color: var(--c1) transparent;
     color: var(--c1);
     scrollbar-width: none;
+    overscroll-behavior: none;
 
 }
 
@@ -32,10 +33,7 @@ body {
     font-weight: 450;
 
 }
-a {
-    color:inherit;
-    text-decoration:none
-}
+
 body.loading {
     overflow: hidden;
     /*When loading screen is shown, overflow hidden*/
@@ -71,7 +69,6 @@ button {
     border-radius: var(--n1);
     padding: calc(var(--n1) * 0.75);
     padding-inline: var(--n2);
-    pointer-events: auto;
 
 }
 
@@ -107,8 +104,8 @@ button:hover:after {
     border-radius: 0px;
     top: 0;
     left: 0;
-    z-index: 11;
-    padding: 0;
+    z-index:12;
+    padding:0;
     backdrop-filter: blur(15px);
 }
 
@@ -124,7 +121,6 @@ button:hover:after {
     scale: 0.95;
     opacity: 0;
     transition: 0.3s allow-discrete;
-    pointer-events: auto;
 }
 
 .setup-sect.active {
@@ -149,9 +145,9 @@ button:hover:after {
     max-width: 800px;
     padding: 40px;
     padding-top: 0;
-    z-index: 2;
     display: flex;
     gap: 10px;
+    z-index:3;
 }
 
 .setup-buttons button {
@@ -159,7 +155,6 @@ button:hover:after {
     background: var(--b1);
     padding: 15px;
     color: var(--c1);
-    pointer-events: auto;
     width: 100%;
 
 }
@@ -259,22 +254,23 @@ button:hover:after {
 .popup {
     display: none;
     flex-direction: column;
-    gap: var(--n1);
-    position: fixed;
+    gap: var(--n2);
+    overflow-y: auto;
     padding: var(--n1);
+    position: fixed;
     transition: 0.3s allow-discrete;
     opacity: 0;
     left: unset;
     top: 0;
-    right: 0;
+    right:0;
     scale: 0.97;
-    z-index: 10;
+    z-index: 9;
     background: var(--b3);
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw);
+    height: calc(100vh);
     backdrop-filter: blur(10px) saturate(3);
     box-shadow: 0px 0px 10px 5px var(--b2);
-    filter: blur(var(--n1));
+    filter: blur(var(--n2));
     overflow-y: auto;
     user-select: none;
     overflow-x: hidden;
@@ -284,9 +280,6 @@ button:hover:after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: var(--n1);
-    height: auto;
-    pointer-events: all;
-    position: relative;
 }
 
 .popup-title {
@@ -303,8 +296,7 @@ button:hover:after {
 }
 
 @starting-style {
-
-    .popup.active {
+.popup.active {
         opacity: 0;
         scale: 0.97;
         filter: blur(var(--n2));
@@ -348,8 +340,7 @@ button:hover:after {
     justify-content: space-between;
     user-select: none;
     align-items: center;
-    pointer-events: auto;
-    z-index: 9;
+    z-index: 3;
 }
 
 #logo {
@@ -373,9 +364,6 @@ button:hover:after {
     height: 100%;
     align-items: center;
     justify-content: center;
-    z-index: 3;
-    pointer-events: auto;
-    user-select: none;
 }
 
 .nav-btn,
@@ -391,20 +379,16 @@ button:hover:after {
     align-items: center;
     justify-content: center;
     font-weight: normal;
-    pointer-events: all;
-    cursor: pointer;
-    z-index: 5;
 
 }
 
 .close-btn {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     font-size: 40px;
-    z-index: 20;
 }
 
 /*Themes*/
@@ -420,7 +404,6 @@ button:hover:after {
     background: var(--b1);
     transform: none;
     gap: var(--n2);
-    z-index: 3;
 }
 
 .title-small {
@@ -500,8 +483,6 @@ button:hover:after {
     width: 80px;
     height: 30px;
 
-    cursor: pointer;
-
 }
 
 .setting-toggle[type=checkbox]::after {
@@ -567,12 +548,12 @@ body.all-grids .grid.inactive {
 
 body.all-grids #grid-cont {
     height: auto;
-    max-height: unset;
+    max-height:unset;
 }
 
 body.all-grids {
     height: auto;
-    max-height: unset;
+    max-height:unset;
 }
 
 @starting-style {
@@ -735,16 +716,7 @@ body.all-grids {
     body {
         min-height: calc(100vh - var(--nav));
         height: auto;
-        font-size: 16px;
-    }
-
-    :root {
-        --nav: 90px;
-    }
-
-    .nav-btn {
-        font-size: 2.5em;
-
+        font-size: 14.75px;
     }
 
     #loading-screen {
@@ -754,7 +726,7 @@ body.all-grids {
     }
 
     .setup-sect {
-        padding: calc(var(--n1)* 2);
+        padding: var(--n1);
     }
 
     #load-img {
