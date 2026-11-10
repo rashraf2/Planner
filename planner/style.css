@@ -55,7 +55,7 @@ h6 {
     font-weight: unset;
 }
 
-button {
+/*button {
     font-family: inherit;
     border: none;
     color: inherit;
@@ -96,7 +96,6 @@ button:hover:after {
     left: 0;
     width: 100%;
 }
-
 /*First-time setup*/
 #setup {
     width: 100%;
@@ -346,9 +345,9 @@ button:hover:after {
     padding-inline: var(--n1);
     display: flex;
     justify-content: space-between;
-    user-select: none;
+    /*user-select: none;
     align-items: center;
-    pointer-events: auto;
+    pointer-events: auto;*/
     z-index: 9;
 }
 
