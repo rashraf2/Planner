@@ -152,7 +152,6 @@ button:hover:after {
 }
 
 .setup-buttons button {
-    z-index: 15;
     font-size: 1.5em;
     background: var(--b1);
     padding: 15px;
@@ -733,7 +732,7 @@ body.all-grids {
     body {
         min-height: calc(100vh - var(--nav));
         height: auto;
-        font-size: 14.2px;
+        font-size: 15.5px;
     }
 
     :root {
@@ -752,7 +751,7 @@ body.all-grids {
     }
 
     .setup-sect {
-        padding: var(--n1);
+        padding: calc(var(--n1)* 2);
     }
 
     #load-img {
