@@ -265,7 +265,7 @@ button:hover:after {
     right:0;
     scale: 0.97;
     z-index: 9;
-    background: var(--b3);
+    background: var(--b2);
     width: calc(100vw);
     height: calc(100vh);
     backdrop-filter: blur(10px) saturate(3);
