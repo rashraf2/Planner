@@ -268,8 +268,6 @@ h6 {
     box-shadow: 0px 0px 10px 5px var(--b2);
     filter: blur(var(--n1));
     overflow-y: auto;
-    user-select: none;
-    overflow-x: hidden;
 }
 
 .popup-wrapper {
@@ -278,7 +276,6 @@ h6 {
     gap: var(--n1);
     height: auto;
     pointer-events: all;
-    position: relative;
 }
 
 .popup-title {
@@ -527,7 +524,7 @@ h6 {
 }
 
 /*Layout of the homework*/
-/*#grid-cont {
+#grid-cont {
     min-height: 100%;
     padding: var(--n1);
     background-color: var(--b2);
@@ -546,7 +543,7 @@ h6 {
     opacity: 1;
     filter: none;
     scale: 1;
-} */
+}
 
 .grid.inactive {
     display: none;
