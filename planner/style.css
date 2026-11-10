@@ -68,7 +68,7 @@ button {
     padding: calc(var(--n1) * 0.75);
     padding-inline: var(--n2);
     pointer-events: auto;
-    Z-index: 15;
+    Z-index: 10;
 
 }
 
