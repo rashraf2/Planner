@@ -300,18 +300,6 @@ button:hover:after {
     filter: none;
 }
 
-@starting-style {
-
-    .popup,
-    .popup.active {
-        opacity: 0;
-        scale: 0.97;
-        display: flex;
-        filter: blur(var(--n2));
-    }
-
-}
-
 .popup-item {
     display: flex;
     justify-content: safe center;
