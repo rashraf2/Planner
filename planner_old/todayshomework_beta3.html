@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+        <div id="updatelog" class="popup">
+                <div class="menu-tray">
+                        <button class=close-btn aria-label="Close"
+                                onclick="document.getElementById('updatelog').classList.toggle('active')">close</button>
+                </div>
+                <h1 id="update-title">Version 3.6</h1>
+                <h2>Version 3 completely overhauled the overall website experience. From there, we've made changes that
+                        aren't quite enough to be in another full version number, so we've combined the features in one
+                        log. We've
+                        added these new features since version 3.0 came out:
+                </h2>
+                <h3><strong>Themes: </strong>Don't like the default color scheme? You can now choose between a generous
+                        selection of
+                        different themes to make your experience more personalized to you.</h3>
+                <h3><strong>Updating Homework: </strong>The homework popup is now easier to access right from one button
+                        on the navbar, and the
+                        process has been redesigned to look and feel easier to use.</h3>
+                <h3><strong>Subjects: </strong>Fixed a few issues regarding subject spacing and certain types of
+                        overflow situations.</h3>
+                <h3><strong>Settings: </strong>The settings page is more compact and slightly redesigned to look better.
+                </h3>
+                <h3><strong>Changelog: </strong>Added a changelog that explains new features.</h3>
+                <h3><strong>Mobile: </strong>Changed mobile layout to prevent overflow and allow for content to fit on
+                        the screen better.</h3>
+                <h3><strong>Proctor View: </strong>Current proctor is now a toggleable view from the "more" button on
+                        the bottom of the screen.</h3>
+                <h3><strong>Welcome screen: </strong>Shows username, if applicable, but also eases transition to saved
+                        theme during page loading.</h3>
+                <h3><strong>Points: </strong>Added points for crossing off subjects. May experience
+                        glitches as this feature is not perfect.</h3>
+                <h3><strong>Alternate Viewing Modes: </strong>Changed alternate viewing modes in settings to show
+                        maximum content on small screens.</h3>
+                <h3><strong>Compact Navigation: </strong>All navigation buttons can be hidden. This is especially useful
+                        for smaller devices.</h3>
+                <h3><strong>Foreign Language: </strong>Changed grid behavior to accomodate FL subjects without taking
+                        too much space; may continue to add things related to this feature.</h3>
+                <h2>This version will likely be the last major update for a while. The main goals for the next update
+                        are better code readability and optimization. Please give feedback if there's anything else you
+                        want to see us add!</h2>
+                <h2>Updates may cause theme corruption. This is an easy fix and only requires you to re-select your
+                        preferred theme if
+                        you are impacted.
+                </h2>
+        </div>
+        </div>
+        </div>
+        <div id="alerts-cont">
+        </div>
+        <div id="overlay" class="popup">
+                <h1 id="overlay-text">Welcome back!</h1>
+                <h2 id="username2">Hello! Just a moment.</h2>
+                <span id="version">Version 3.6</span>
+        </div>
+        <nav id="nav">
+                <div id=navtray class="nodisplay">
+                        <button class="nav-btn"
+                                onclick="document.getElementById('updatelog').classList.toggle('active')"
+                                id="updatelog-btn" aria-label='Update Homework'>article</button>
+                        <button class="nav-btn" onclick="document.getElementById('hw-popup').classList.toggle('close')"
+                                id="hw-btn" aria-label='Update Homework'>cached</button>
+                        <div id="mode-cont">
+                                <button class="nav-btn" id="mode-btn" value='flex'
+                                        onclick="changeElementStat('theme-cont', 'display', 'padding')"
+                                        aria-label="Themes">brush</button>
+
+                                <div id=theme-cont>
+                                        <button pri="0,0%," hsl3="10" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn selected-btn">Dark Mode</button>
+                                        <button pri="0,0%," hsl3="45" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Gray
+                                                Mode</button>
+                                        <button pri="0,0%," hsl3="85" onclick="useTheme(this)" class="theme-btn">Light
+                                                Mode</button>
+                                        <!--<button num=3 hsl3="hc" color='yes' onclick="useTheme(this)" class="theme-btn"
+                                                selected>High Contrast</button>-->
+                                        <button pri="0,63.9%," hsl3="15" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Ruby Red</button>
+                                        <button pri="33,100%," hsl3="15" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Fiery Orange</button>
+                                        <button pri="235,40.9%," hsl3="15" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Midnight Blue</button>
+                                        <button pri="174,50%," hsl3="26.2" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Teal</button>
+                                        <button pri="127,92.3%," hsl3="15" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Forest Green</button>
+                                        <button pri="135,90%," hsl3="30.4" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Lime</button>
+                                        <button pri="282,92.3%," hsl3="15" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Lavender Purple</button>
+                                        <button pri="275, 100%," hsl3="20.5" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Royal Purple</button>
+                                        <button pri="298,100%," hsl3="30.2" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Bubble Gum</button>
+                                        <button pri="55,96%," hsl3="26" color='yes' onclick="useTheme(this)"
+                                                class="theme-btn" selected>Lemon Yellow</button>
+                                        <button pri="41,100%," hsl3="50.3" onclick="useTheme(this)"
+                                                class="theme-btn">Desert</button>
+                                        <button pri="21,100%," hsl3="10.2" color="yes" onclick="useTheme(this)"
+                                                class="theme-btn">Soda</button>
+
+
+                                </div>
+                        </div>
+                        <button class="nav-btn" onclick="toggle('menu')" id="menu-btn"
+                                aria-label="Settings">Settings</button>
+                </div>
+                <button onclick="document.getElementById('navtray').classList.toggle('active');document.getElementById('pill-tray').classList.toggle('active')"
+                        class="nav-btn  nodisplay" id="navtoggle"></button>
+                <div id="pill-tray" class="nodisplay">
+                        <div id=announcement>...</div>
+                        <div id="user-cont">
+                                <div>
+                                        <h1 id="username"></h1>
+                                        <h2 id="desc">
+                                                Current user</h2>
+                                </div>
+                                <span class="separator"></span>
+                                <div>
+                                        <h1 id="points">0</h1>
+                                        <h2 id="desc2">
+                                                points</h2>
+                                </div>
+
+                        </div>
+                </div>
+                <div id="nav-logo" class="nodisplay">
+                        <h1>Today's Homework</h1>
+                        <h2 id=date-tracker>Loading time.</h2>
+                </div>
+                <menu id="menu" class="menus">
+                        <h1 class="menu-title">Settings</h1>
+                        <div class="menu-tray">
+                                <button class='maxbtn'
+                                        onclick='document.getElementById("menu").classList.toggle("max")'></button>
+                                <button class=close-btn aria-label="Close" onclick="toggle('menu')">close</button>
+                        </div>
+                        <div class='menu-sect'>
+                                <h2 class="menu-sect-header">Font</h2>
+                                <h3 class="menu-sect-desc">Choose font size and whether you prefer a simpler font
+                                        family.</h3>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Font size multiplier</h3><input tabindex=1
+                                                onchange="changeBodyStat('fontSize')" type="number" min="1" size="2"
+                                                step="0.1">
+                                        <!--https://stackoverflow.com/questions/26003148/change-the-increment-value-of-html-number-input-decimals*/-->
+                                </div>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Use basic font</h3><input tabindex=2
+                                                onchange="changeBodyStat('fontFamily')" type="checkbox"
+                                                class="menu-input" value="arial, sans-serif">
+                                </div>
+                        </div>
+                        <!--<div class='menu-sect'>
+                        <h2 class="menu-sect-header">Colors</h2>
+                         <div class="menu-option">
+                                <h3 class=menu-label>If you're looking for high contrast mode, it is in the themes menu
+                                        (brush icon in navbar).</h3>
+                        </div>
+                        </div>-->
+                        <div class='menu-sect'>
+                                <h2 class="menu-sect-header">Checkboxes</h2>
+                                <h3 class="menu-sect-desc">Allows you to check off subjects.</h3>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Show checkboxes</h3><input tabindex=1
+                                                onchange="toggle('checkboxes')" type="checkbox" class="menu-input">
+                                </div>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Show confetti</h3>
+                                        <input tabindex=1 type="checkbox" class="menu-input" id="confetti-box">
+                                </div>
+                        </div>
+                        <div class='menu-sect'>
+                                <h2 class="menu-sect-header">Layout</h2>
+                                <h3 class="menu-sect-desc">How the subjects are displayed.</h3>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Use scrollable layout</h3><input tabindex=1
+                                                class=menu-input onchange="toggle('mobileform')" type="checkbox"
+                                                class="menu-input">
+                                </div>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Use list layout</h3><input tabindex=1
+                                                onchange="toggle('list')" type="checkbox" class="menu-input">
+                                </div>
+
+                        </div>
+                        <div class='menu-sect'>
+                                <h2 class="menu-sect-header">Spacing</h2>
+                                <h3 class="menu-sect-desc">Gaps between certain elements on the page.</h3>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Reduce subjects' spacing</h3><input tabindex=1
+                                                onchange="changeElementStat('hw-grid', 'gap', 'padding')"
+                                                type="checkbox" class="menu-input" value="5px">
+                                </div>
+                                <div class="menu-option">
+                                        <h3 class=menu-label>Hide navbar logo</h3><input tabindex=1
+                                                onchange="changeElementStat('nav-logo', 'display')" value='none'
+                                                type=checkbox>
+                                </div>
+
+                        </div>
+                        <div class="menu-sect">
+                                <h2 class="menu-sect-header">Reset saved data</h2>
+                                <h3 class="menu-sect-desc">Irriversable actions. Use with caution.</h3>
+                                <button class="settings-button"
+                                        onclick="remData();this.classList.add('disabled')">Remove
+                                        all data</button>
+                                <button class="settings-button"
+                                        onclick="remUser();this.classList.add('disabled')">Remove
+                                        username
+                                </button>
+                                <button class="settings-button" onclick="remPts();this.classList.add('disabled')">Remove
+                                        points
+                                </button>
+                                <button class="settings-button"
+                                        onclick="remTheme();this.classList.add('disabled')">Remove
+                                        theme
+                                </button>
+                        </div>
+                        <div class="menu-sect">
+                                <h2 class="menu-sect-header">Feedback</h2>
+                                <h3 class="menu-sect-desc">Both positive and negative feedback is welcomed.</h3>
+                                <a class="settings-button" target='_blank'
+                                        href="https://docs.google.com/forms/d/e/1FAIpQLScq-h3NGTolFl5qq2NEcNcFDhR_WuW4CI4Y6C3UhDdh5oyBCQ/viewform?usp=header">Send
+                                        feedback
+                                </a>
+                        </div>
+                        <div class="menu-sect">
+                                <h2 class="menu-sect-header">Unstable Build Notice</h2>
+                                <h3 class="menu-sect-desc">Expect bugs. This version is relatively new. Most important
+                                        functions
+                                        should be working okay.
+                                </h3>
+                        </div>
+                </menu>
+        </nav>
+        <div id="usernames" class="popup">
+                <span id="welcome">Please input your desired username. Leave blank for
+                        'Guest' (will not save).</span>
+                <input type="text" id="username-entry">
+                <button onclick="usernameFunct()">Save name</button>
+                <div id="tips">
+                        <h1>1. Currently, you cannot input "Guest" into the username box due to code structure.</h1>
+
+                        <h1>2. If you make a mistake typing your username, or you simply want to reset something, don't
+                                worry! You can reset your name, points, or theme preference in the
+                                settings menu.</h1>
+                        <h1>3. Name, points, and theme only valid for this browser and cannot be recovered once deleted.
+                        </h1>
+                        <h1>4. Although unlikely, due to possible updates in certain functions, data loss may occur
+                                between updates. Please screenshot your saved data
+                                before updates go live. You should be notified before an update does go public.</h1>
+
+                </div>
+        </div>
+        <div id="hw-popup" class="popup close">
+                <h1 id=title>Update Homework</h1>
+                <div id="hw-inputs">
+                        <div class=hw-input><span class="hw-input-label">Algebra</span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+
+                        <div class=hw-input><span class="hw-input-label">Adv. Algebra</span><input tabindex=1
+                                        type="text" class="hw-input2">
+                        </div>
+
+                        <div class="hw-input">
+                                <span class="hw-input-label">English</span><input tabindex=1 type="text"
+                                        class="hw-input2">
+                        </div>
+
+                        <div class=hw-input><span class="hw-input-label">Science</span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+
+                        <div class=hw-input><span class="hw-input-label">History </span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+                        <div class=hw-input><span class="hw-input-label">Chinese </span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+                        <div class=hw-input><span class="hw-input-label">Latin </span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+                        <div class=hw-input><span class="hw-input-label">Spanish </span><input tabindex=1 type="text"
+                                        class="hw-input2"></div>
+                        <div class=hw-input><span class="hw-input-label">Announcement</span><input tabindex=1
+                                        id="announcement-input" type="text" class="hw-input2">
+                        </div>
+                </div>
+                <button id="hw-input-submit" onclick="submit()">Save changes</button>
+        </div>
+        <div id="grid-cont">
+                <div class="hw-grid show">
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:hsl(9, 83%, 30%)">
+                                        <h1 class="subject-title">Algebra</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(155, 102, 5)">
+                                        <h1 class="subject-title">Geometry</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(13, 62, 130)">
+                                        <h1 class="subject-title">English</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(11, 76, 11)">
+                                        <h1 class="subject-title">Science</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(68, 7, 83)">
+                                        <h1 class="subject-title">History</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                </div>
+                <div class="hw-grid">
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:hsl(9, 83%, 30%)">
+                                        <h1 class="subject-title">Chinese</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(135, 135, 21)">
+                                        <h1 class="subject-title">Latin</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                        <div class="subject-cont">
+                                <input tabindex=1 class="checkmark" aria-label="Check/Uncheck" onclick='checkConfetti()'
+                                        type="checkbox">
+                                <div class="subject" style="background:rgb(13, 62, 130)">
+                                        <h1 class="subject-title">Spanish</h1>
+                                        <h2 class="subject-desc" contenteditable="true"></h2>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <button id="proctor-toggle" class="nodisplay"
+                onclick="document.getElementById('footer-cont').classList.toggle('active');this.classList.toggle('active')"></button>
+        <span id="footer-cont" class="nodisplay">
+                <h2 id="proctor" class="nodisplay">Loading...</h2>
+        </span>
+        <div id="confetti-cont"></div>
+</body>
+<script src="script.js"></script>
+
+</html>
