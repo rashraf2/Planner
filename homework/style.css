@@ -74,7 +74,7 @@ button {
 
 input {
     padding: 10px;
-    background: var(--b1);
+    background: var(--b2);
     border-radius: var(--n2);
     color: var(--c1);
     border: none;
@@ -265,7 +265,7 @@ button:hover:after {
     right:0;
     scale: 0.97;
     z-index: 9;
-    background: var(--b2);
+    background: var(--b1);
     width: calc(100vw);
     height: calc(100vh);
     backdrop-filter: blur(10px) saturate(3);
