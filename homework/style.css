@@ -391,6 +391,8 @@ button:hover:after {
     right: 20px;
  background:none;
     padding:0;
+    width:fit-content;
+    height:fit-content;
     font-size: 30px;
 }
 
