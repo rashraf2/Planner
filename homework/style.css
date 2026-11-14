@@ -389,9 +389,9 @@ button:hover:after {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 65px;
-    height: 65px;
-    font-size: 40px;
+ background:none;
+    padding:0;
+    font-size: 30px;
 }
 
 /*Themes*/
